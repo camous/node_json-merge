@@ -40,8 +40,10 @@ var mergeJSON = function(json1, json2){
 		result = json1 ;
 
 		for(var i = 0; i < json2.length; i++){
-			if(result.indexOf(json2[i]) === -1){
-				result[result.length] = json2[i] ;
+			if(result.find(f => {
+				return JSON.stringify(json2[i]) === JSON.stringify(f);
+			}) === undefined) {
+				result[result.length] = json2[i];
 			}
 		}
 	}else{
